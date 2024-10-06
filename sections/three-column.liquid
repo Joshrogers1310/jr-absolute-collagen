@@ -1,0 +1,106 @@
+{% if section.settings.background_color.alpha != 0.0 %}
+  <style>
+    #section-{{ section.id }} {
+      background-color: {{ section.settings.background_color }};
+    }
+  </style>
+{% endif %}
+
+{% if section.settings.content_color.alpha != 0.0 %}
+  <style>
+    #section-{{ section.id }} > * {
+      color: {{ section.settings.content_color }};
+    }
+  </style>
+{% endif %}
+
+<section id="section-{{ section.id }}" class="section-three-column">
+  <div class="page-container">
+    <div class="three-column-title">
+      <h2>{{ section.settings.title }}</h2>
+    </div>
+    <div class="three-column-content">
+      {% for block in section.blocks %}
+        <div class="three-column-content-item">
+          {% if block.settings.column_title != blank %}
+            <div class="three-column-item-title">{{ block.settings.column_title }}</div>
+          {% endif %}
+          {% if block.settings.column_content != blank %}
+            <div class="three-column-item-content">{{ block.settings.column_content }}</div>
+          {% endif %}
+      {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Three Column",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Content Color"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "column_title",
+          "label": "Column Title"
+        },
+        {
+          "type": "text",
+          "id": "column_content",
+          "label": "Column Content"
+        } 
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Three Column",
+      "settings": {
+        "title": "Three Column"
+      },
+      "blocks": [
+        {
+          "type": "column",
+          "settings": {
+            "column_title": "Title",
+            "column_content": "Content"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "column_title": "Title",
+            "column_content": "Content"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "column_title": "Title",
+            "column_content": "Content"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
