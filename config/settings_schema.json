@@ -1,0 +1,20 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "JR Absolute Collagen",
+    "theme_version": "1.0.0",
+    "theme_author": "Josh",
+    "theme_documentation_url": "https:\/\/github.com\/Joshrogers1310\/jr-absolute-collagen",
+    "theme_support_url": "https:\/\/github.com\/Joshrogers1310\/jr-absolute-collagen"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      }
+    ]
+  }
+]
