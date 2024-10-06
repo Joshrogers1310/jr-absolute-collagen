@@ -3,10 +3,52 @@
     "main": {
       "type": "main-page",
       "settings": {
+        "title": "{{ page.title }}",
+        "use_page_description": true,
+        "description": "<p>{{ page.metafields.custom.page_description | metafield_tag }}<\/p>",
+        "button_text": "Subscribe",
+        "button_url": "#product-details"
+      }
+    },
+    "three_column_tKJNMW": {
+      "type": "three-column",
+      "blocks": {
+        "column_BzcYzK": {
+          "type": "column",
+          "settings": {
+            "column_title": "Clinically Proven",
+            "column_content": "visible results on skin, hair and nails"
+          }
+        },
+        "column_TWWL39": {
+          "type": "column",
+          "settings": {
+            "column_title": "100% Saw Improvement",
+            "column_content": "in fine lines and wrinkles*"
+          }
+        },
+        "column_XpiYx9": {
+          "type": "column",
+          "settings": {
+            "column_title": "8000mg of Collagen",
+            "column_content": "the optimal daily dosage for maximum effects"
+          }
+        }
+      },
+      "block_order": [
+        "column_BzcYzK",
+        "column_TWWL39",
+        "column_XpiYx9"
+      ],
+      "settings": {
+        "background_color": "#fffdd4",
+        "content_color": "",
+        "title": "The UK’s #1 collagen brand..."
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "three_column_tKJNMW"
   ]
 }
