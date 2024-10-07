@@ -17,7 +17,7 @@
 
 <br>
 
-**<h2>Set Up Steps</h2>**
+**<h2>Set-up steps</h2>**
 
 **<h6>Steps to access store:</h6>**
 
@@ -34,7 +34,7 @@
 3. Request access to this repository
 4. Once approved you will be able to clone the repository to your Github Desktop App - details for this can be found here - [https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
-**<h6>Setting up and running the dev store:</h6>**
+**<h6>Running the dev site:</h6>**
 
 1. Open up a command-line tool and cd in to the cloned repository
 2. Run the command **`shopify theme dev --store https://jr-absolute-collagen.myshopify.com`**
