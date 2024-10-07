@@ -5,9 +5,9 @@
       "settings": {
         "title": "{{ page.title }}",
         "use_page_description": true,
-        "description": "<p>{{ page.metafields.custom.page_description | metafield_tag }}<\/p>",
+        "description": "{{ page.metafields.custom.page_description | metafield_tag }}",
         "button_text": "Subscribe",
-        "button_url": "#product-details"
+        "button_url": "#heroProduct"
       }
     },
     "three_column_tKJNMW": {
@@ -45,10 +45,44 @@
         "content_color": "",
         "title": "The UK’s #1 collagen brand..."
       }
+    },
+    "subscription_ziCxPC": {
+      "type": "subscription",
+      "blocks": {
+        "subscription_step_zyUHGK": {
+          "type": "subscription-step",
+          "settings": {
+            "subscription_step_content": "Subscription Step Content"
+          }
+        },
+        "subscription_step_9ypUzn": {
+          "type": "subscription-step",
+          "settings": {
+            "subscription_step_content": "Subscription Step Content"
+          }
+        },
+        "subscription_step_G7UCjw": {
+          "type": "subscription-step",
+          "settings": {
+            "subscription_step_content": "Subscription Step Content"
+          }
+        }
+      },
+      "block_order": [
+        "subscription_step_zyUHGK",
+        "subscription_step_9ypUzn",
+        "subscription_step_G7UCjw"
+      ],
+      "settings": {
+        "title": "Subscription",
+        "button_text": "Subscribe",
+        "product": "marine-liquid-collagen-drink-for-women"
+      }
     }
   },
   "order": [
     "main",
-    "three_column_tKJNMW"
+    "three_column_tKJNMW",
+    "subscription_ziCxPC"
   ]
 }
