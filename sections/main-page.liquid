@@ -1,16 +1,40 @@
+<style>
+  .main-page-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: var(--layout-content-tight);
+  }
+
+  .main-page-content .page-title,
+  .main-page-content .page-description {
+    text-align: center;
+    width: 100%;
+  }
+
+  .main-page-content .button {
+    margin: 0 auto;
+  }
+</style>
+
 <section id="section-{{ section.id }}" class="section-main-page">
   <div class="page-container">
-    <h1 class="page-title">{{ section.settings.title }}</h1>
-    {% if section.settings.use_page_description == true %}
-        <div class="page-description">{{ page.content }}</div>
-    {% else %}
-      {% if section.settings.description != blank %}
-        <div class="page-description">{{ section.settings.description }}</div>
+    <div class="main-page-content">
+      <h1 class="page-title">{{ section.settings.title }}</h1>
+      
+      {% if section.settings.use_page_description == true %}
+          <div class="page-description mid-text">{{ page.content }}</div>
+      {% else %}
+        {% if section.settings.description != blank %}
+          <div class="page-description mid-text">{{ section.settings.description }}</div>
+        {% endif %}
       {% endif %}
-    {% endif %}
-    {% if section.settings.button_text != blank or section.settings.button_url != blank %}
-      <a href="{{ section.settings.button_url }}" class="button button-primary" role="button">{{ section.settings.button_text }}</a>
-    {% endif %}
+      {% if section.settings.button_text != blank or section.settings.button_url != blank %}
+        <a href="{{ section.settings.button_url }}" class="button button-primary" role="button">{{ section.settings.button_text }}</a>
+      {% endif %}
+    </div>
   </div>
 </section>
 
