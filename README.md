@@ -1,20 +1,25 @@
 # jr-absolute-collagen
 
+<br>
 
-**Pre-requisites**
+**<h2>Pre-requisites</h2>**
 
-To access this store you must have the following:
+**<h6>To access this store you must have the following:</h6>**
 
-• Have an active Shopify partners account (One can be created here - [https://accounts.shopify.com/signup](https://accounts.shopify.com/signup)
-• Have an active Github account (One can be created here - (One can be created here - [https://github.com/signup](https://github.com/signup)
-• Download the GitHub Desktop Appl - [https://desktop.github.com/download/](https://desktop.github.com/download/)
+• Have an active Shopify partners account (One can be created here - [https://accounts.shopify.com/signup](https://accounts.shopify.com/signup)<br>
+• Have an active Github account (One can be created here - (One can be created here - [https://github.com/signup](https://github.com/signup)<br>
+• Download the GitHub Desktop Appl - [https://desktop.github.com/download/](https://desktop.github.com/download/)<br>
 • Installed the Shopify CLI along with the required pre-requisites - (details can be found here - [https://shopify.dev/docs/api/shopify-cli](https://shopify.dev/docs/api/shopify-cli)
 
-To be able to develop this store you will also require
+**<h6>To be able to develop this store you will also require:</h6>**
 
 • A SCSS compiling tool installed within your code editor
 
-**Steps to access store**
+<br>
+
+**<h2>Set Up Steps</h2>**
+
+**<h6>Steps to access store:</h6>**
 
 1. Sign in to your Shopify Partners account, go to stores > Add store > Request access to store
 2. Enter the store URL: **`https://jr-absolute-collagen.myshopify.com/`**
@@ -22,13 +27,14 @@ To be able to develop this store you will also require
 4. If required add the collaborator code **`4928`** to request access
 5. Once approved you will be able to access the store via your Shopify Partners account
 
-**Steps to clone the Github Repository**
+**<h6>Steps to clone the Github Repository:</h6>**
 
 1. Sign in to your Github account
 2. Visit your dashboard and search for the repository named **`jr-absolute-collagen`**
-3. Once approved you will be able to clone the repository to your Github Desktop App - details for this can be found here - [https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+3. Request access to this repository
+4. Once approved you will be able to clone the repository to your Github Desktop App - details for this can be found here - [https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
-**Setting up and running the dev store**
+**<h6>Setting up and running the dev store:</h6>**
 
 1. Open up a command-line tool and cd in to the cloned repository
 2. Run the command **`shopify theme dev --store https://jr-absolute-collagen.myshopify.com`**
