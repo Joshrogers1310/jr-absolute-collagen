@@ -1,0 +1,263 @@
+<style>
+  .section-hero-product {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .section-hero-product:not(.active) {
+    padding: 0;
+  }
+</style>
+
+<section id="section-{{ section.id }}" class="section-subscription">
+  <div class="page-container">
+    {% if section.settings.title %}
+      <div class="page-title subscription-title">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+    {% endif %}
+    {% if section.blocks.size > 0 %}
+      <div class="subscription-content">
+        {% for block in section.blocks %}
+          <div class="subscription-content-item">
+            <div class="subscription-step-number">
+              {{ forloop.index }}
+            </div>
+            {% if block.settings.subscription_step_content %}
+              <div class="subscription-item-content">{{ block.settings.subscription_step_content }}</div>
+            {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if section.settings.button_text %}
+      <button class="button button-primary" data-action="trigger-hero-product">{{ section.settings.button_text }}</button>
+    {% endif %}
+  </div>
+</section>
+
+{% assign product = section.settings.product %}
+
+{% if product %}
+  <section id="heroProduct" class="section-hero-product" style="max-height: 0px">
+    <div class="page-container">
+      <div class="hero-product-container">
+        <div class="product-media">
+          {{ product.featured_image | image_url: width: 800 | image_tag }}
+        </div>
+
+        <div class="product-details">
+          <h3 class="product-title">{{ product.title }}</h3>
+          <div class="product-price">
+            <span>from</span> {{ product.price_min | money }}          
+          </div>
+          {% if product.description != blank %}
+            <div class="product-description">{{ product.description }}</div>
+          {% endif %}
+          {% form 'product', product, id: 'product-add-form' %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+            {% if product.variants.size > 0 %}
+              <fieldset>
+                <legend class="product-variants-title">Select purchase option:</legend>
+                <div class="product-variants">
+                  {% for variant in product.variants %}
+                    {% assign variant_description = variant.metafields.custom.description %}
+
+                    <div class="product-variant" data-variant-price="{{ variant.price | money_without_currency }}">
+                      <input
+                        {% unless variant.available %}disabled{% endunless %}
+                        type="radio"
+                        id="variant-{{ variant.id }}"
+                        name="id"
+                        value="{{ variant.id }}"
+                        aria-labelledby="variant-title-{{ variant.id }} variant-description-{{ variant.id }}"
+                        {% unless variant.available %}aria-disabled="true"{% endunless %}
+                        tabindex="{% if variant.available %}0{% else %}-1{% endif %}"
+                        {% if forloop.index == 2 and variant.available %}checked aria-checked="true"{% endif %}>
+
+                      <label for="variant-{{ variant.id }}">
+                        <div class="variant-details">
+                          <div class="variant-title" id="variant-title-{{ variant.id }}">{{ variant.title }}</div>
+                          {% if variant_description %}
+                            <div class="variant-description" id="variant-description-{{ variant.id }}">{{ variant_description }}</div>
+                          {% endif %}
+                        </div>
+                        <div class="variant-price">
+                          {% if variant.available %}
+                            {{ variant.price | money }}
+                          {% else %}
+                            This variant is currently sold out.
+                          {% endif %}
+                        </div>
+                      </label>
+                    </div>
+                  {% endfor %}
+                </div>
+              </fieldset>
+            {% endif %}
+            
+            {% if product.available %}
+              <button type="submit" class="button button-primary">Add to Cart - <span class="product-button-price">{{ product.price_min | money }}</span></button>
+            {% else %}
+              <button type="submit" class="button button-primary" disabled aria-label="This product is currently sold out. Please try again later.">Sold Out</button>
+            {% endif %}
+            </button>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      const triggerButton = document.querySelector('[data-action="trigger-hero-product"]');
+      const heroProduct = document.querySelector('#heroProduct');
+
+      if (triggerButton) {
+        triggerButton.addEventListener('click', function() {
+          if (heroProduct.style.maxHeight === '0px' || !heroProduct.style.maxHeight) {
+            const sectionHeight = heroProduct.scrollHeight + 'px';
+            heroProduct.style.maxHeight = sectionHeight;
+            heroProduct.classList.add('active');
+          }
+
+          setTimeout(() => {
+            // Scroll the heroProduct to the top of the view
+            heroProduct.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 300);
+        });
+      }
+    
+      const productVariants = document.querySelectorAll('.product-variant');
+      const productButtonPrice = document.querySelector('.product-button-price');
+
+      // Change the button price based on the selected variant
+      if (productVariants) {
+        productVariants.forEach(variant => {
+          variant.addEventListener('click', function(event) {
+
+            // Check if the variant is disabled
+            const variantInput = this.querySelector('input[type="radio"]');
+            if (variantInput && variantInput.disabled) {
+              event.preventDefault();
+              return;
+            }
+            const variantPrice = this.getAttribute('data-variant-price');
+            if (variantPrice) {
+              productButtonPrice.textContent = Shopify.formatMoney(variantPrice);
+            }
+          });
+        });
+      }
+
+      const form = document.querySelector('#product-add-form');
+      const submitButton = form ? form.querySelector('button[type="submit"]') : null;
+
+      if (form) {
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          
+          // Grab the selected variant
+          const selectedVariant = form.querySelector('input[name="id"]:checked');
+          if (!selectedVariant) {
+            console.error('No variant selected');
+            return;
+          }
+
+          // Change the button to show it's submitting
+          // Store the original button text to reference back to
+          const originalButtonText = submitButton.textContent;
+          submitButton.textContent = 'Submitting...';
+
+          // Create the form data to submit to the cart api endpoint
+          const formData = new FormData();
+          formData.append('id', selectedVariant.value);
+          formData.append('quantity', 1);
+
+          // Send the data and handle the response
+          fetch('/cart/add.js', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => response.json())
+          .then(data => {
+            triggerPageMessage('success', 'Product added to cart successfully!');
+            submitButton.textContent = originalButtonText;
+          })
+          .catch(error => {
+            triggerPageMessage('error', 'Failed to add product to cart. Please try again.');
+            submitButton.textContent = originalButtonText;
+          });
+        });
+      }
+    });
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Subscription",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Subscription"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Button Text"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Select Product"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subscription-step",
+      "name": "Subscription Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subscription_step_content",
+          "label": "Subscription Step Content"
+        } 
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Subscription",
+      "settings": {
+        "title": "Subscription",
+        "button_text": "Button Text"
+      },
+      "blocks": [
+        {
+          "type": "subscription-step",
+          "settings": {
+            "subscription_step_content": "Subscription Step Content"
+          }
+        },
+        {
+          "type": "subscription-step",
+          "settings": {
+            "subscription_step_content": "Subscription Step Content"
+          }
+        },
+        {
+          "type": "subscription-step",
+          "settings": {
+            "subscription_step_content": "Subscription Step Content"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
