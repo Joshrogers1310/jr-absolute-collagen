@@ -42,6 +42,7 @@
   </head>
 
   <body class="template-{{ template.name }} template-{{ template.name }}-{{ template.suffix | replace: ' ', '-' | downcase }}">
+    {% render 'page-messages' %}
     {{ content_for_layout }}
   </body>
 </html>
