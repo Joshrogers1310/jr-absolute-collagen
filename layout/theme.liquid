@@ -38,6 +38,7 @@
 
   <body class="template-{{ template.name }} template-{{ template.name }}-{{ template.suffix | replace: ' ', '-' | downcase }}">
     {% render 'page-messages' %}
+    {% section 'header' %}
     {{ content_for_layout }}
   </body>
 

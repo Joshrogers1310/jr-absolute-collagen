@@ -1,0 +1,14 @@
+<header>
+  <div class="page-container">
+    <a href="{{ routes.root_url }}" class="header-logo-link">
+      {% if settings.logo != blank %}
+        {{ settings.logo | image_url: width: 200 | image_tag:
+          class: "header-logo",
+          alt: shop.name
+        }}
+      {% else %}
+        <span class="h4">{{ shop.name }}</span>
+      {% endif %}
+    </a>
+  </div>
+</header>
