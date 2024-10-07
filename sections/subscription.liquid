@@ -1,13 +1,4 @@
-<style>
-  .section-hero-product {
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-  }
-
-  .section-hero-product:not(.active) {
-    padding: 0;
-  }
-</style>
+{{ 'subscription.css' | asset_url | stylesheet_tag }}
 
 <section id="section-{{ section.id }}" class="section-subscription">
   <div class="page-container">
