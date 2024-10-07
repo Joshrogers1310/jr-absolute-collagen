@@ -1,15 +1,13 @@
-{% if section.settings.background_color.alpha != 0.0 %}
+{% if section.settings.background_color.alpha != 0.0 or section.settings.content_color.alpha != 0.0 %}
   <style>
     #section-{{ section.id }} {
-      background-color: {{ section.settings.background_color }};
-    }
-  </style>
-{% endif %}
-
-{% if section.settings.content_color.alpha != 0.0 %}
-  <style>
-    #section-{{ section.id }} > * {
-      color: {{ section.settings.content_color }};
+      {% if section.settings.background_color.alpha != 0.0 %}
+        background-color: {{ section.settings.background_color }};
+      {% endif %}
+      
+      {% if section.settings.content_color.alpha != 0.0 %}
+        color: {{ section.settings.content_color }};
+      {% endif %}
     }
   </style>
 {% endif %}
@@ -17,7 +15,7 @@
 <section id="section-{{ section.id }}" class="section-three-column">
   <div class="page-container">
     {% if section.settings.title %}
-      <div class="page-title three-column-title">
+      <div class="page-title three-column-title" role="heading" aria-level="2">
         <h2>{{ section.settings.title }}</h2>
       </div>
     {% endif %}
