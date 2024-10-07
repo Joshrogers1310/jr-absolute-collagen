@@ -29,6 +29,11 @@
     {% endstyle %}
 
     {{ 'style.css' | asset_url | stylesheet_tag }}
+
+    <script>
+      var Shopify = Shopify || {};
+      Shopify.money_format = "{{ shop.money_format }}";
+    </script>
   </head>
 
   <body class="template-{{ template.name }} template-{{ template.name }}-{{ template.suffix | replace: ' ', '-' | downcase }}">
