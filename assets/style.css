@@ -11,26 +11,23 @@ html body {
 html .page-container {
   max-width: var(--layout-max-width);
 }
-html .page-container h1, html .page-container h2, html .page-container h3, html .page-container h4, html .page-container h5, html .page-container h6 {
+html h1, html h2, html h3, html h4, html h5, html h6 {
   font-family: var(--font-heading-family);
   font-weight: 300;
   line-height: 1;
   margin: 0;
 }
-html .page-container h1:has(+ *), html .page-container h2:has(+ *), html .page-container h3:has(+ *), html .page-container h4:has(+ *), html .page-container h5:has(+ *), html .page-container h6:has(+ *) {
-  margin-bottom: 60px;
-}
-html .page-container p {
+html p {
   line-height: 1.2;
   margin: 0;
 }
-html .page-container p:has(+ p) {
+html p:has(+ p) {
   margin-bottom: 20px;
 }
-html .page-container .mid-text {
+html .mid-text {
   line-height: 1.2;
 }
-html .page-container .button {
+html .button {
   border-width: 2px;
   border-style: solid;
   display: inline-block;
@@ -40,46 +37,182 @@ html .page-container .button {
   text-decoration: none;
   transition: 0.2s ease-in-out;
 }
-html .page-container .button.button-primary {
+html .button.button-primary {
   background-color: var(--color-btn-primary);
   border-color: #000;
   color: #000;
 }
-html .page-container .button:hover {
+html .button:hover {
   cursor: pointer;
   opacity: 0.4;
 }
-html .page-container .button[disabled] {
+html .button[disabled] {
   opacity: 0.4;
   pointer-events: none;
 }
+html .page-message {
+  border-radius: 10px;
+  left: 50%;
+  padding: 20px;
+  position: fixed;
+  top: 40px;
+  transform: translateX(-50%);
+  z-index: var(--page-message-z-index);
+}
+html .page-message.success {
+  background-color: var(--color-success);
+  color: #fff;
+}
+html .page-message.error {
+  background-color: var(--color-error);
+  color: #fff;
+}
+html header {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+html header .header-logo-link {
+  display: inline-block;
+}
+html .section-three-column * {
+  text-align: center;
+}
+html .three-column-title {
+  margin-bottom: 60px;
+}
+html .three-column-content {
+  display: flex;
+  max-width: var(--layout-max-width);
+  width: 100%;
+}
+html .three-column-item-title {
+  font-weight: 600;
+  text-transform: uppercase;
+}
 
+@media (max-width: 992px) {
+  .three-column-content {
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: flex-start;
+  }
+  .three-column-content-item {
+    width: 100%;
+  }
+  .three-column-item-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+}
 @media (max-width: 768px) {
-  html h1 {
+  html *:has(+ .button) {
+    margin-bottom: 30px;
+  }
+  html h1:has(+ *), html h2:has(+ *), html h3:has(+ *), html h4:has(+ *), html h5:has(+ *), html h6:has(+ *) {
+    margin-bottom: 30px;
+  }
+  html h1,
+  html .h1 {
     font-size: 44px;
   }
+  html h2,
+  html .h2 {
+    font-size: 40px;
+  }
+  html h3,
+  html .h3 {
+    font-size: 36px;
+  }
+  html h4,
+  html .h4 {
+    font-size: 32px;
+  }
+  html h5,
+  html .h5 {
+    font-size: 28px;
+  }
+  html h6,
+  html .h6 {
+    font-size: 24px;
+  }
   html .mid-text {
+    font-size: 18px;
+  }
+  html .button {
     font-size: 20px;
+    padding: 16px 28px;
   }
   html section {
     padding: 80px 20px;
   }
+  html header {
+    padding: 20px;
+  }
+  html header .header-logo-link img {
+    width: 150px;
+  }
 }
 @media (min-width: 768px) {
-  html h1 {
+  html *:has(+ .button) {
+    margin-bottom: 60px;
+  }
+  html h1:has(+ *), html h2:has(+ *), html h3:has(+ *), html h4:has(+ *), html h5:has(+ *), html h6:has(+ *) {
+    margin-bottom: 60px;
+  }
+  html h1,
+  html .h1 {
     font-size: 60px;
   }
+  html h2,
+  html .h2 {
+    font-size: 56px;
+  }
+  html h3,
+  html .h3 {
+    font-size: 52px;
+  }
+  html h4,
+  html .h4 {
+    font-size: 48px;
+  }
+  html h5,
+  html .h5 {
+    font-size: 44px;
+  }
+  html h6,
+  html .h6 {
+    font-size: 40px;
+  }
   html .mid-text {
-    font-size: 24px;
+    font-size: 20px;
   }
   html .button {
     font-size: 20px;
     padding: 16px 32px;
   }
-  html *:has(+ .button) {
-    margin-bottom: 60px;
-  }
   html section {
-    padding: 80px 40px;
+    padding: 100px 80px;
+  }
+  html header {
+    padding: 20px 80px;
+  }
+  html header .header-logo-link img {
+    width: 200px;
+  }
+}
+@media (min-width: 992px) {
+  .three-column-content {
+    align-items: stretch;
+    gap: 60px;
+    justify-content: center;
+  }
+  .three-column-content-item {
+    width: calc(33.3333333333% - 20px);
+  }
+  .three-column-item-title {
+    font-size: 24px;
+    margin-bottom: 20px;
   }
 }
