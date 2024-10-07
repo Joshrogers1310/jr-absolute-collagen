@@ -1,11 +1,9 @@
 {{ 'subscription.css' | asset_url | stylesheet_tag }}
 
-<section id="section-{{ section.id }}" class="section-subscription">
+<section id="subscriptionSection" class="section-subscription">
   <div class="page-container">
     {% if section.settings.title %}
-      <div class="page-title subscription-title">
-        <h2>{{ section.settings.title }}</h2>
-      </div>
+      <h2 class="page-title subscription-title">{{ section.settings.title }}</h2>
     {% endif %}
     {% if section.blocks.size > 0 %}
       <div class="subscription-content">
@@ -15,13 +13,14 @@
               {{ forloop.index }}
             </div>
             {% if block.settings.subscription_step_content %}
-              <div class="subscription-item-content">{{ block.settings.subscription_step_content }}</div>
+              <p class="subscription-item-content mid-text">{{ block.settings.subscription_step_content }}</p>
             {% endif %}
+          </div>
         {% endfor %}
       </div>
     {% endif %}
     {% if section.settings.button_text %}
-      <button class="button button-primary" data-action="trigger-hero-product">{{ section.settings.button_text }}</button>
+      <a href="{{ section.settings.button_url }}" data-action="trigger-hero-product" class="button button-primary" role="button">{{ section.settings.button_text }}</a>
     {% endif %}
   </div>
 </section>
@@ -29,7 +28,7 @@
 {% assign product = section.settings.product %}
 
 {% if product %}
-  <section id="heroProduct" class="section-hero-product" style="max-height: 0px">
+  <section id="heroProduct" class="section-hero-product" aria-hidden="true" hidden>
     <div class="page-container">
       <div class="hero-product-container">
         <div class="product-media">
@@ -37,9 +36,11 @@
         </div>
 
         <div class="product-details">
-          <h3 class="product-title">{{ product.title }}</h3>
-          <div class="product-price">
-            <span>from</span> {{ product.price_min | money }}          
+          <div class="product-detail-container">
+            <h3 class="product-title h5">{{ product.title }}</h3>
+            <div class="product-price">
+              <span>from</span> {{ product.price_min | money }}          
+            </div>
           </div>
           {% if product.description != blank %}
             <div class="product-description">{{ product.description }}</div>
@@ -61,6 +62,7 @@
                         id="variant-{{ variant.id }}"
                         name="id"
                         value="{{ variant.id }}"
+                        product-name="{{ variant.title }}"
                         aria-labelledby="variant-title-{{ variant.id }} variant-description-{{ variant.id }}"
                         {% unless variant.available %}aria-disabled="true"{% endunless %}
                         tabindex="{% if variant.available %}0{% else %}-1{% endif %}"
@@ -77,7 +79,7 @@
                           {% if variant.available %}
                             {{ variant.price | money }}
                           {% else %}
-                            This variant is currently sold out.
+                            Sold out
                           {% endif %}
                         </div>
                       </label>
@@ -88,7 +90,9 @@
             {% endif %}
             
             {% if product.available %}
-              <button type="submit" class="button button-primary">Add to Cart - <span class="product-button-price">{{ product.price_min | money }}</span></button>
+              <button type="submit" class="button button-primary">
+                <span class="button-text-to-change">Add to Cart</span> - <span class="product-button-price">{{ product.price_min | money }}</span>
+              </button>
             {% else %}
               <button type="submit" class="button button-primary" disabled aria-label="This product is currently sold out. Please try again later.">Sold Out</button>
             {% endif %}
@@ -99,6 +103,7 @@
     </div>
   </section>
 
+  {{ 'subscription.js' | asset_url | script_tag }}
 {% endif %}
 
 {% schema %}
@@ -110,6 +115,11 @@
       "id": "title",
       "label": "Title",
       "default": "Subscription"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
     },
     {
       "type": "text",
