@@ -1,0 +1,18 @@
+<div id="page-messages" class="page-message">
+  <div class="page-message-content">
+    
+  </div>
+</div>
+
+<script>
+  function triggerPageMessage(pageMessageClass, pageMessageContent) {
+    const pageMessage = document.querySelector('.page-message');
+    pageMessage.classList.add(pageMessageClass);
+    pageMessage.innerHTML = pageMessageContent;
+
+    setTimeout(() => {
+      pageMessage.classList.remove(pageMessageClass);
+      pageMessage.innerHTML = '';
+    }, 5000);
+  }
+</script>
