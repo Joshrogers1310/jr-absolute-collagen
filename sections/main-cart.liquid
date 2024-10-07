@@ -1,0 +1,11 @@
+<section id="main-cart">
+  {% for item in cart.items %}
+    <div class="cart-item">
+      <div class="cart-item-details">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.price | money_without_trailing_zeros }}</p>
+        <p>{{ item.quantity }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
