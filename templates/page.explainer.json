@@ -52,19 +52,19 @@
         "subscription_step_zyUHGK": {
           "type": "subscription-step",
           "settings": {
-            "subscription_step_content": "Subscription Step Content"
+            "subscription_step_content": "£15 off your first subscription order"
           }
         },
         "subscription_step_9ypUzn": {
           "type": "subscription-step",
           "settings": {
-            "subscription_step_content": "Subscription Step Content"
+            "subscription_step_content": "Save 18% on all future orders"
           }
         },
         "subscription_step_G7UCjw": {
           "type": "subscription-step",
           "settings": {
-            "subscription_step_content": "Subscription Step Content"
+            "subscription_step_content": "Exclusive savings on Deep Life Skincare subscriptions"
           }
         }
       },
@@ -74,7 +74,8 @@
         "subscription_step_G7UCjw"
       ],
       "settings": {
-        "title": "Subscription",
+        "title": "Why Subscribe?",
+        "button_url": "#heroProduct",
         "button_text": "Subscribe",
         "product": "marine-liquid-collagen-drink-for-women"
       }

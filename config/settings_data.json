@@ -1,4 +1,15 @@
 {
   "current": {
+    "logo": "shopify:\/\/shop_images\/absolute-collagen-logo.png",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
   }
 }
