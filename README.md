@@ -13,8 +13,9 @@
 
 **<h6>To be able to develop this store you will also require:</h6>**
 
-• A SCSS compiling tool installed within your code editor
-• NPM installed
+• A SCSS compiling tool installed within your code editor<br>
+• NPM installed - details can be found here
+[https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/)
 
 <br>
 
