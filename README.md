@@ -32,7 +32,7 @@
 
 1. Sign in to your Github account
 2. Visit your dashboard and search for the repository named **`jr-absolute-collagen`**
-3. Request access to this repository
+3. Request access to this repository (if not public)
 4. Once approved you will be able to clone the repository to your Github Desktop App - details for this can be found here - [https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
 **<h6>Running the dev site:</h6>**
