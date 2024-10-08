@@ -14,6 +14,7 @@
 **<h6>To be able to develop this store you will also require:</h6>**
 
 • A SCSS compiling tool installed within your code editor
+• NPM installed
 
 <br>
 
@@ -41,3 +42,9 @@
 3. You will be prompted to login to your partners account
 4. Once logged in, go back to the command-line tool and you should then be able to access the online store via the generated links
 5. If prompted, the store password is **`stahth`**
+
+**<h6>Running Cypress Test:</h6>**
+
+1. To install Cypress using NPM, open up a command-line tool and cd in to the cloned Github repository
+2. Run the command **`npm install cypress --save-dev`**
+3. Once installed, to execute all tests run the command **`npx cypress run`**
