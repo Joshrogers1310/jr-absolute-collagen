@@ -20,7 +20,7 @@
       </div>
     {% endif %}
     {% if section.settings.button_text %}
-      <a href="{{ section.settings.button_url }}" data-action="trigger-hero-product" class="button button-primary" role="button">{{ section.settings.button_text }}</a>
+      <a href="#heroProduct" class="button button-primary" data-action="trigger-hero-product" role="button">{{ section.settings.button_text }}</a>
     {% endif %}
   </div>
 </section>
@@ -94,7 +94,7 @@
                 <span class="button-text-to-change">Add to Cart</span> - <span class="product-button-price">{{ product.price_min | money }}</span>
               </button>
             {% else %}
-              <button type="submit" class="button button-primary" disabled aria-label="This product is currently sold out. Please try again later.">Sold Out</button>
+              <button type="button" class="button button-primary" disabled aria-label="This product is currently sold out. Please try again later.">Sold Out</button>
             {% endif %}
             </button>
           {% endform %}

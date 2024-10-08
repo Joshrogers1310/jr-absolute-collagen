@@ -31,8 +31,8 @@
           <div class="page-description mid-text">{{ section.settings.description }}</div>
         {% endif %}
       {% endif %}
-      {% if section.settings.button_text or section.settings.button_url %}
-        <a href="{{ section.settings.button_url }}" class="button button-primary" data-action="trigger-hero-product" role="button">{{ section.settings.button_text }}</a>
+      {% if section.settings.button_text %}
+        <a href="#heroProduct" class="button button-primary" data-action="trigger-hero-product" role="button">{{ section.settings.button_text }}</a>
       {% endif %}
     </div>
   </div>
