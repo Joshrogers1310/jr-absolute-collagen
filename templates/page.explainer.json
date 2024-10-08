@@ -4,7 +4,6 @@
       "type": "main-page",
       "settings": {
         "title": "{{ page.title }}",
-        "use_page_description": true,
         "description": "{{ page.metafields.custom.page_description | metafield_tag }}",
         "button_text": "Subscribe",
         "button_url": "#heroProduct"
