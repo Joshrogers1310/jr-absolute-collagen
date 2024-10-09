@@ -25,7 +25,7 @@
 
 1. Sign in to your Shopify Partners account, go to stores > Add store > Request access to store
 2. Enter the store URL: **`https://jr-absolute-collagen.myshopify.com/`**
-3. Select the relevant permissions required - at minimum for this test you will require acccess to Online store
+3. Select the relevant permissions required - at minimum for this test you will require acccess to Online store > Themes
 4. If required add the collaborator code **`4928`** to request access
 5. Once approved you will be able to access the store via your Shopify Partners account
 
