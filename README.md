@@ -8,7 +8,7 @@
 
 • Have an active Shopify partners account (One can be created here - [https://accounts.shopify.com/signup](https://accounts.shopify.com/signup)<br>
 • Have an active Github account (One can be created here - (One can be created here - [https://github.com/signup](https://github.com/signup)<br>
-• Download the GitHub Desktop Appl - [https://desktop.github.com/download/](https://desktop.github.com/download/)<br>
+• Download the GitHub Desktop App - [https://desktop.github.com/download/](https://desktop.github.com/download/)<br>
 • Installed the Shopify CLI along with the required pre-requisites - (details can be found here - [https://shopify.dev/docs/api/shopify-cli](https://shopify.dev/docs/api/shopify-cli)
 
 **<h6>To be able to develop this store you will also require:</h6>**
